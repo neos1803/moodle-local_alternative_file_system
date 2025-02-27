@@ -1078,7 +1078,7 @@ class S3 {
         $uri = str_replace(array('%2F', '%2B'), array('/', '+'), rawurlencode($uri));
         return sprintf(($https ? 'https' : 'http') . '://%s/%s?AWSAccessKeyId=%s&Expires=%u&Signature=%s',
             // $hostBucket ? $bucket : self::$endpoint . '/' . $bucket, $uri, self::$__accessKey, $expires,
-            $hostBucket ? $bucket : $bucket . '.' . self::$endpoint . '/', $uri, self::$__accessKey, $expires,
+            $hostBucket ? $bucket : $bucket . '.' . self::$endpoint, $uri, self::$__accessKey, $expires,
             urlencode(self::__getHash("GET\n\n\n{$expires}\n/{$bucket}/{$uri}")));
     }
 
