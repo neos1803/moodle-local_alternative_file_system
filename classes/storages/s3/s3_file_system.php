@@ -118,7 +118,7 @@ class s3_file_system extends storage_file_system implements i_file_system {
         $config = get_config("local_alternative_file_system");
 
         $uri = $this->get_local_path_from_hash($contenthash);
-        $lifetime = time() + 604800;
+        $lifetime = floor(time() / 1000);
         $url = $this->get_instance()->getAuthenticatedURL($config->settings_s3_bucketname, $uri, $lifetime, false, true);
 
         if (strpos((new Exception())->getTraceAsString(), "mod/scorm")) {
